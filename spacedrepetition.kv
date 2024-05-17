@@ -1,0 +1,154 @@
+<CardText>:
+    size: 50, 50
+<CardsLeft>:
+    size: 0, 0
+
+<Flashcards>:
+    cardFront: card_front_text
+    cardBack: card_back_text
+    cardsCompleted: cards_completed
+    cardsMissed: cards_missed
+    cardsRemaining: cards_remaining
+
+    #Front Card Text
+    Label:
+        font_size: root.cardFront.fs * root.height / 600
+        text_size: root.width / 3, root.height / 2
+        halign: 'center'
+        valign: 'center'
+        center_x: root.width / 2
+        top: root.height / 2 + 45
+        text: str(root.cardFront.text)
+        font_name: "Pixel"
+
+    #Back Card Text
+    Label:
+        font_size: root.cardBack.fs * root.height / 600
+        text_size: root.width / 3, root.height/ 2
+        halign: 'center'
+        valign: 'center'
+        center_x: root.width / 2
+        top: root.height / 2 + 45
+        text: str(root.cardBack.text)
+        font_name: "Pixel"
+
+    #Don't Know Button
+    Button:
+        text: "Don't Know it :("
+        font_size: 7 * root.height / 600
+        size: root.width / 9, root.height / 20
+        center_x: root.width * 4 / 10
+        center_y: root.height * 1 / 10
+        on_release: root.dontKnowClicked()
+        font_name: "Pixel"
+
+    #Know Button
+    Button:
+        text: "Know it!"
+        font_size: 8 * root.height / 600
+        size: root.width / 9, root.height / 20
+        center_x: root.width * 6 / 10
+        center_y: root.height * 1 / 10
+        on_release: root.KnowClicked()
+        font_name: "Pixel"
+
+    #Add Card Button
+    Button:
+        text: "Add Cards!"
+        font_size: 12 * root.height / 600
+        size: root.width / 8, root.height / 18
+        center_x: root.width * 1 / 10
+        center_y: root.height * 1 / 10
+        on_release: root.addCardButton()
+        font_name: "Pixel"
+
+    Button:
+        halign: 'center'
+        valign: 'center'
+        opacity: 0
+        size: root.width / 3, root.height / 2
+        center_x: root.width / 2
+        center_y: root.height / 2 + 45
+        on_release: root.cardToggled()
+
+    #Completed Cards
+    Label:
+        font_size: 12 * root.height / 600
+        text_size: root.width / 9, root.height / 20
+        halign: 'center'
+        valign: 'center'
+        center_x: root.width * 6 / 10
+        center_y: root.height * 19 / 20
+        text: str(root.cardsCompleted.text)
+        font_name: "Pixel"
+
+    #Missed Cards
+    Label:
+        font_size: 12 * root.height / 600
+        text_size: root.width / 9, root.height / 20
+        halign: 'center'
+        valign: 'center'
+        center_x: root.width * 5 / 10
+        center_y: root.height * 19 / 20
+        text: str(root.cardsMissed.text)
+        font_name: "Pixel"
+
+    #Remaining Cards
+    Label:
+        font_size: 12 * root.height / 600
+        text_size: root.width / 9, root.height / 20
+        halign: 'center'
+        valign: 'center'
+        center_x: root.width * 4 / 10
+        center_y: root.height * 19 / 20
+        text: str(root.cardsRemaining.text)
+        font_name: "Pixel"
+
+    CardText:
+        id: card_front_text
+        center_x: root.center_x
+        center_y: root.center_y
+
+    CardText:
+        id: card_back_text
+        center_x: root.center_x
+        center_y: root.center_y
+
+    CardsLeft:
+        id: cards_completed
+        center_x: root.center_x
+        center_y: root.center_y
+    CardsLeft:
+        id: cards_missed
+        center_x: root.center_x
+        center_y: root.center_y
+    CardsLeft:
+        id: cards_remaining
+        center_x: root.center_x
+        center_y: root.center_y
+
+<addCardPop>:
+    TextInput:
+        id: card_front_input
+        hint_text: "Enter text for the front of the card!"
+        size_hint: .4, 0.3
+        pos_hint: {"x":0.05, "y":0.65}
+        font_name: "Pixel"
+
+    TextInput:
+        id: card_back_input
+        hint_text: "Enter text for the back of the card!"
+        size_hint: .4, 0.3
+        pos_hint: {"x":0.55, "y":0.65}
+        font_name: "Pixel"
+    Button:
+        text: "Add a new Card!"
+        font_size: 30 * root.height / 600
+        size_hint: 0.5, 0.3
+        pos_hint: {"x": 0.25, "y": 0.1}
+        on_release: root.addANewCard()
+        font_name: "Pixel"
+#    CardText:
+#        id: card_front_input
+#        center_x: root.center_x
+#        center_y: root.center_y
