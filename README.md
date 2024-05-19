@@ -14,8 +14,6 @@ Simple Spaced Repetition Program that could be designed to my own vision.
 ## To-Do (to get to at some point):
 - Better graphics/images.
 - Full card list viewing.
-- Feedback on card added (and reset of text boxes).
-- Create excel file on startup if none found.
 
 ## Additional information:
 - Requires _DePixelHalbfett.ttf_ from font [*DePixel*](https://www.dafont.com/depixel.font)
