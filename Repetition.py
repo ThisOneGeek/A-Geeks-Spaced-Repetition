@@ -27,7 +27,11 @@ class repetitionClass():
     currentCard = 0
 
     def startup(self):
-        self.repDataFrame = pd.read_excel('Repetition.xlsx', sheet_name='sheet1', converters={'Front of Card':str, 'Back of Card':str, 'Date of Next Rep':datetime.datetime.date, 'Repetition Number':int})
+        try:
+            self.repDataFrame = pd.read_excel('Repetition.xlsx', sheet_name='sheet1', converters={'Front of Card':str, 'Back of Card':str, 'Date of Next Rep':datetime.datetime.date, 'Repetition Number':int})
+        except FileNotFoundError:
+            self.repDataFrame =  pd.DataFrame(columns = ['Front of Card', 'Back of Card', 'Date of Next Rep', 'Repetition Number'])
+
         for i in range(0, len(self.repDataFrame)):
             #print((self.repDataFrame["Date of Next Rep"][i] - datetime.datetime.today().date()).days)
             if self.repDataFrame["Date of Next Rep"][i] == datetime.datetime.today().date() or (self.repDataFrame["Date of Next Rep"][i] - datetime.datetime.today().date()).days < 0:
@@ -113,6 +117,7 @@ class repetitionClass():
     def allDone(self):
         self.repDataFrame = self.repDataFrame.sample(frac=1).reset_index(drop=True)
         self.repDataFrame.to_excel('Repetition.xlsx', sheet_name='sheet1', index=False)
+        self.cardsToRedoIndex = []
 
 
 

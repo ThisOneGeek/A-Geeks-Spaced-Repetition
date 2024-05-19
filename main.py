@@ -87,15 +87,18 @@ class CardsLeft(Widget):
 
 class addCardPop(FloatLayout):
     #repObj = []
-    cardFrontInput = ObjectProperty(None)
+    #cardFrontInput = ObjectProperty(None)
+    #cardBackInput = ObjectProperty(None)
     def __init__(self, repObj):
         super().__init__()
         self.repObj = repObj
     def addANewCard(self):
         #print(len(self.ids.card_front_input.text))
         #print(self.ids.card_back_input.text)
-        if len(self.ids.card_front_input.text) > 0 and len(self.ids.card_front_input.text) > 0:
+        if len(self.ids.card_front_input.text) > 0 and len(self.ids.card_back_input.text) > 0:
             self.repObj.addCard(self.ids.card_front_input.text, self.ids.card_back_input.text)
+            self.ids.card_front_input.text = ""
+            self.ids.card_back_input.text = ""
         self.repObj.allDone()
 
 
